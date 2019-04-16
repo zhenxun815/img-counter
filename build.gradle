@@ -1,0 +1,68 @@
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+        maven {
+            url "http://www.dcm4che.org/maven2/"
+        }
+    }
+
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:2.0.4.RELEASE"
+    }
+}
+
+plugins {
+    id 'java'
+}
+
+group 'cn.yiheng'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+sourceCompatibility = 1.8
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'utf-8'
+}
+
+repositories {
+    jcenter()
+    mavenCentral()
+    maven {
+        url "http://www.dcm4che.org/maven2/"
+    }
+}
+
+
+dependencies {
+
+    /**
+     * lombok
+     */
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.6'
+    testCompileOnly 'org.projectlombok:lombok:1.18.6'
+    annotationProcessor 'org.projectlombok:lombok:1.18.6'
+    compileOnly 'org.projectlombok:lombok:1.18.6'
+
+    /**
+     * spring-boot
+     */
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-configuration-processor'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    compile 'commons-codec:commons-codec:1.11'
+
+    /**
+     * Apache POI
+     * to parse Excel
+     */
+    implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '4.1.0'
+
+}

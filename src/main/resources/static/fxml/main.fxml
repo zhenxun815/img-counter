@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="cn.yiheng.controller.CounterController"
+            stylesheets="@../css/fx_upload_pane.css"
+            prefHeight="268.0" prefWidth="620.0" style="-fx-background-color: transparent;-fx-padding: 10px">
+
+    <VBox fx:id="panel_choose" styleClass="pane">
+        <children>
+            <HBox>
+                <VBox.margin>
+                    <Insets>
+                        <top>50</top>
+                    </Insets>
+                </VBox.margin>
+                <Button onMouseClicked="#chooseImgDir" styleClass="btn_small">选择图片所在文件夹
+
+                    <HBox.margin>
+                        <Insets>
+                            <left>150</left>
+                        </Insets>
+                    </HBox.margin>
+                </Button>
+                <Text fx:id="text_img_dir" styleClass="text_tips">
+                    <HBox.margin>
+                        <Insets>
+                            <left>10</left>
+                            <top>5</top>
+                        </Insets>
+                    </HBox.margin>
+                </Text>
+            </HBox>
+            <HBox>
+                <VBox.margin>
+                    <Insets>
+                        <top>25</top>
+                    </Insets>
+                </VBox.margin>
+                <Button onMouseClicked="#chooseExcelDir" styleClass="btn_small">选择Excel保存文件夹
+                    <HBox.margin>
+                        <Insets>
+                            <left>150</left>
+                        </Insets>
+                    </HBox.margin>
+                </Button>
+                <Text fx:id="text_excel_dir" styleClass="text_tips">
+                    <HBox.margin>
+                        <Insets>
+                            <left>10</left>
+                            <top>5</top>
+                        </Insets>
+                    </HBox.margin>
+                </Text>
+            </HBox>
+
+            <HBox styleClass="confirm_btn_container">
+                <VBox.margin>
+                    <Insets>
+                        <top>25</top>
+                    </Insets>
+                </VBox.margin>
+                <children>
+                    <Button fx:id="btn_cancel_upload" onMouseClicked="#cancelCollect" styleClass="btn_cancel">取消
+                    </Button>
+                    <Button fx:id="btn_start_upload" onMouseClicked="#startCollect" styleClass="btn_confirm">开始
+                        <HBox.margin>
+                            <Insets>
+                                <left>75</left>
+                            </Insets>
+                        </HBox.margin>
+                    </Button>
+                </children>
+            </HBox>
+
+        </children>
+    </VBox>
+
+    <!--统计中显示页面-->
+    <VBox fx:id="panel_progress" stylesheets="@../css/fx_upload_progress.css" styleClass="pane">
+        <children>
+            <Text fx:id="text_progress_title" styleClass="text_title">正在统计
+                <VBox.margin>
+                    <Insets>
+                        <top>30</top>
+                    </Insets>
+                </VBox.margin>
+            </Text>
+            <HBox styleClass="progress_box">
+                <VBox.margin>
+                    <Insets>
+                        <top>30</top>
+                    </Insets>
+                </VBox.margin>
+                <children>
+                    <ProgressBar fx:id="progress_bar">
+                        <HBox.margin>
+                            <Insets>
+                                <left>90</left>
+                            </Insets>
+                        </HBox.margin>
+                    </ProgressBar>
+                    <Text fx:id="text_progress_info">准备中..
+                        <HBox.margin>
+                            <Insets>
+                                <left>6</left>
+                            </Insets>
+                        </HBox.margin>
+                    </Text>
+                </children>
+            </HBox>
+            <Text fx:id="text_progress_desc" styleClass="text_tips">正在采集图片信息...
+                <VBox.margin>
+                    <Insets>
+                        <top>30</top>
+                    </Insets>
+                </VBox.margin>
+            </Text>
+        </children>
+    </VBox>
+
+    <!--统计完成显示页面-->
+    <VBox fx:id="panel_success" styleClass="pane">
+        <children>
+            <ImageView fitHeight="40" fitWidth="40">
+                <image>
+                    <Image url="@../img/success-circle.png"></Image>
+                </image>
+
+                <VBox.margin>
+                    <Insets>
+                        <top>33</top>
+                    </Insets>
+                </VBox.margin>
+            </ImageView>
+
+            <Text fx:id="text_success_desc">图片信息采集完毕
+                <VBox.margin>
+                    <Insets>
+                        <top>14</top>
+                    </Insets>
+                </VBox.margin>
+            </Text>
+            <Text fx:id="text_success_info">图片总数:
+                <VBox.margin>
+                    <Insets>
+                        <top>14</top>
+                    </Insets>
+                </VBox.margin>
+            </Text>
+            <Button fx:id="btn_success_confirm" onMouseClicked="#cancelCollect" styleClass="btn_confirm">退出
+                <VBox.margin>
+                    <Insets>
+                        <top>31</top>
+                    </Insets>
+                </VBox.margin>
+            </Button>
+        </children>
+    </VBox>
+
+    <!--失败显示界面-->
+    <VBox fx:id="panel_fail" styleClass="pane">
+        <children>
+            <ImageView fitHeight="40" fitWidth="40">
+                <image>
+                    <Image url="@../img/fail-circle.png"></Image>
+                </image>
+
+                <VBox.margin>
+                    <Insets>
+                        <top>33</top>
+                    </Insets>
+                </VBox.margin>
+            </ImageView>
+
+            <Text fx:id="text_fail_desc" styleClass="text_tips">图片信息采集失败
+                <VBox.margin>
+                    <Insets>
+                        <top>33</top>
+                    </Insets>
+                </VBox.margin>
+            </Text>
+            <HBox styleClass="confirm_btn_container">
+                <VBox.margin>
+                    <Insets>
+                        <top>33</top>
+                    </Insets>
+                </VBox.margin>
+                <children>
+                    <Button fx:id="btn_fail_cancel" onMouseClicked="#cancelCollect" styleClass="btn_cancel">取消</Button>
+                    <Button fx:id="btn_fail_retry" onMouseClicked="#retry" styleClass="btn_confirm">重试
+                        <HBox.margin>
+                            <Insets>
+                                <left>75</left>
+                            </Insets>
+                        </HBox.margin>
+                    </Button>
+                </children>
+            </HBox>
+        </children>
+    </VBox>
+
+</AnchorPane>
